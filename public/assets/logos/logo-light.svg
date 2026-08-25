@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <!-- Coastal Olive & Wave Motif -->
+  <g transform="translate(4, 12)">
+    <path d="M12 2C8 9 8 19 19 25C21 16 19 7 12 2Z" fill="#D8C4A0" opacity="0.95"/>
+    <path d="M26 12C21 18 19 27 28 34C31 26 31 17 26 12Z" fill="#F8F1E8" opacity="0.9"/>
+    <circle cx="19" cy="28" r="3" fill="#C97745" />
+    <path d="M6 34C14 34 18 31 26 31C34 31 38 34 44 34" stroke="#D8C4A0" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="56" y="31" font-family="'Cormorant Garamond', 'Playfair Display', Georgia, serif" font-size="25" font-weight="600" letter-spacing="0.12em" fill="#F8F1E8">LITTLE COAST</text>
+  <text x="58" y="47" font-family="'Inter', system-ui, sans-serif" font-size="8.5" font-weight="500" letter-spacing="0.28em" fill="#D8C4A0" opacity="0.92">MEDITERRANEAN KITCHEN</text>
+</svg>

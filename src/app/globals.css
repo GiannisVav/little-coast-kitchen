@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-aegean: #05111D;
+    --brand-coastal: #123047;
+    --brand-ivory: #F8F1E8;
+    --brand-cream: #FFF8EF;
+    --brand-terracotta: #C97745;
+    --brand-olive: #626B4F;
+    --brand-mist: #8FA3A2;
+    --brand-sand: #D8C4A0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #05111D;
+    color: #F8F1E8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #05111D;
+    color: #F8F1E8;
+    overflow-x: hidden;
+  }
+
+  /* Smooth scroll margins for all targeted sections */
+  section, div[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* Custom interactive accessibility and tactile touch effects */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-brand-terracotta px-6 py-3.5 text-sm font-medium tracking-wide text-brand-cream transition-all duration-300 ease-out hover:bg-brand-terracottaHover hover:shadow-btn-terracotta active:bg-brand-terracottaActive active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-brand-sand/50 bg-brand-aegean/30 px-6 py-3.5 text-sm font-medium tracking-wide text-brand-ivory backdrop-blur-sm transition-all duration-300 ease-out hover:border-brand-sand hover:bg-brand-coastal/60 hover:text-white active:bg-brand-aegean/60 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .nav-link {
+    @apply relative py-1 text-sm font-normal tracking-wider text-brand-ivory/80 transition-colors duration-200 hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean rounded;
+  }
+}
+
+/* Stagger animation delay helper utilities */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
