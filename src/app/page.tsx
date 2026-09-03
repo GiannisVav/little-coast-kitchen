@@ -1,7 +1,9 @@
+import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import FeaturedDishes from "@/components/FeaturedDishes";
-import AboutAndVisit from "@/components/AboutAndVisit";
-import ReservationsAndFooter from "@/components/ReservationsAndFooter";
+import OurStory from "@/components/OurStory";
+import VisitUs from "@/components/VisitUs";
+import Footer from "@/components/Footer";
 import {
   HeroToDishesDivider,
   DishesToAboutDivider,
@@ -11,26 +13,32 @@ import {
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-brand-aegean">
-      {/* 1. Hero Section */}
+      {/* 1. Sticky Transparent Top Bar */}
+      <Navigation />
+
+      {/* 2. Hero Section */}
       <HeroSection />
 
       {/* Coastal Wave Transition: Aegean Navy -> Soft Cream */}
       <HeroToDishesDivider />
 
-      {/* 2. Featured Dishes Section */}
+      {/* 3. Featured Dishes Section */}
       <FeaturedDishes />
 
       {/* Soft Coastal Curve Transition: Soft Cream -> Warm Ivory */}
       <DishesToAboutDivider />
 
-      {/* 3. About & Visit Section */}
-      <AboutAndVisit />
+      {/* 4. Our Story Section */}
+      <OurStory />
 
-      {/* Coastal Wave Transition: Warm Ivory -> Aegean Navy */}
+      {/* 5. Visit Us Section */}
+      <VisitUs />
+
+      {/* Coastal Wave Transition: Soft Cream/Ivory -> Aegean Navy */}
       <AboutToReservationsDivider />
 
-      {/* 4. Reservations & Footer Section */}
-      <ReservationsAndFooter />
+      {/* 6. Footer Section */}
+      <Footer />
     </div>
   );
 }

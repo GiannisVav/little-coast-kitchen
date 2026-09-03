@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu as MenuIcon, X } from "lucide-react";
@@ -8,20 +8,6 @@ import { smoothScrollTo } from "@/lib/scrollTo";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navLinks = [
     { name: "Menu", href: "#menu" },
@@ -39,18 +25,12 @@ export default function Navigation() {
   };
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-brand-aegean/95 backdrop-blur-md border-b border-brand-sand/15 shadow-lg py-2.5 sm:py-3.5"
-          : "bg-transparent py-4 sm:py-6"
-      }`}
-    >
+    <header className="sticky top-0 z-50 w-full bg-brand-aegean/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
       <nav
         aria-label="Main Navigation"
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12 animate-fade-in-down"
+        className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5 sm:px-8 sm:py-4 lg:px-12"
       >
-        {/* Brand Logo on the Left - Prominent, Crisp Transparent Asset */}
+        {/* Brand Logo on the Left - image only */}
         <Link
           href="/"
           onClick={(e) => {
@@ -62,7 +42,7 @@ export default function Navigation() {
           className="group flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean"
           aria-label="Little Coast Mediterranean Kitchen - Return to homepage"
         >
-          <div className="relative h-14 w-20 sm:h-20 sm:w-28 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative h-12 w-24 sm:h-14 sm:w-28 transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/assets/logos/logo-light.png"
               alt="Little Coast - Mediterranean Kitchen"
@@ -74,14 +54,14 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Navigation Links and CTA on the Right */}
-        <div className="hidden items-center gap-9 lg:flex">
-          <ul className="flex items-center gap-8">
+        <div className="hidden items-center gap-8 lg:flex">
+          <ul className="flex items-center gap-7">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="nav-link text-[13.5px] uppercase tracking-[0.2em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+                  className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
                 >
                   {link.name}
                 </a>
@@ -92,7 +72,7 @@ export default function Navigation() {
           <a
             href="#reservations"
             onClick={(e) => handleNavClick(e, "#reservations")}
-            className="inline-flex items-center justify-center rounded-full bg-brand-terracotta px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-brand-cream transition-all duration-300 hover:bg-brand-terracottaHover hover:shadow-btn-terracotta active:bg-brand-terracottaActive active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean shadow-sm cursor-pointer"
+            className="inline-flex items-center justify-center rounded-full bg-brand-terracotta px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-brand-cream transition-all duration-300 hover:bg-brand-terracottaHover hover:shadow-btn-terracotta active:bg-brand-terracottaActive active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean shadow-sm cursor-pointer"
           >
             Book a table
           </a>
@@ -103,7 +83,7 @@ export default function Navigation() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-full border border-brand-sand/30 bg-brand-aegean/70 p-2.5 text-brand-ivory backdrop-blur-sm transition-colors hover:border-brand-sand hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean"
+            className="inline-flex items-center justify-center rounded-full border border-brand-sand/30 bg-brand-aegean/80 p-2.5 text-brand-ivory backdrop-blur-sm transition-colors hover:border-brand-sand hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean"
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           >

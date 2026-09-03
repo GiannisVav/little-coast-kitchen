@@ -19,43 +19,43 @@ const dishes: Dish[] = [
     id: "chicken-souvlaki",
     name: "Chicken Souvlaki",
     image: "/assets/showcased-dishes/chicken-souvlaki.png",
-    description: "Char-grilled skewers, lemon, mountain oregano, and house-made cucumber tzatziki.",
+    description: "Char-grilled chicken skewers with lemon, oregano, garlic, and house tzatziki.",
     price: "$24",
   },
   {
     id: "grilled-salmon",
     name: "Grilled Salmon",
     image: "/assets/showcased-dishes/grilled-salmon.png",
-    description: "Wood-fired wild fillet, salted capers, charred lemon, and fresh garden dill.",
+    description: "Crispy-skinned salmon with asparagus, cherry tomatoes, and lemon herb oil.",
     price: "$32",
   },
   {
     id: "lamb-chops",
     name: "Lamb Chops",
     image: "/assets/showcased-dishes/lamb-chops.png",
-    description: "Rosemary-crusted chops, roasted garlic confit, crisp baby potatoes, and fresh mint.",
+    description: "Grilled lamb chops with rosemary, roasted garlic, sea salt, and red wine jus.",
     price: "$38",
   },
   {
     id: "grilled-octopus",
     name: "Grilled Octopus",
     image: "/assets/showcased-dishes/grilled-octopus.png",
-    description: "Caramelized tender tentacle, yellow fava purée, capers, and red wine vinegar.",
+    description: "Charred octopus with capers, pickled red onion, and lemon olive oil.",
     price: "$28",
   },
   {
     id: "greek-salad",
     name: "Greek Salad",
     image: "/assets/showcased-dishes/greek-salad.png",
-    description: "Heirloom tomatoes, Persian cucumbers, Kalamata olives, barrel-aged feta, and olive oil.",
-    price: "$18",
+    description: "Tomatoes, cucumber, Kalamata olives, feta, and Greek oregano.",
+    price: "$16",
   },
   {
     id: "galaktoboureko",
     name: "Galaktoboureko",
     image: "/assets/showcased-dishes/galaktoboureko.png",
-    description: "Crisp golden phyllo pastry filled with warm semolina custard and spiced citrus syrup.",
-    price: "$14",
+    description: "Semolina custard in crisp phyllo with syrup and cinnamon.",
+    price: "$12",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function FeaturedDishes() {
             Featured Dishes
           </h2>
           <p className="mt-4 text-base font-normal leading-relaxed text-brand-coastal/85 sm:text-lg">
-            Cooked over open embers with seasonal harvest from coastal growers and Aegean fishers.
+            Simple Mediterranean dishes made with fresh ingredients and cooked over fire.
           </p>
         </ScrollReveal>
 
@@ -127,14 +127,14 @@ export default function FeaturedDishes() {
           ))}
         </div>
 
-        {/* Centered Ghost Button: "See full menu" with Smooth Scroll */}
+        {/* Centered Button: "See full menu" with Smooth Scroll */}
         <ScrollReveal variant="fade-up" delay={200} className="mt-14 sm:mt-16 flex justify-center">
           <button
             type="button"
             onClick={() => smoothScrollTo("#reservations")}
             className="group inline-flex items-center justify-center rounded-full border border-brand-coastal/35 bg-transparent px-8 py-3.5 text-xs sm:text-sm font-medium tracking-widest uppercase text-brand-coastal transition-all duration-300 ease-out hover:border-brand-coastal hover:bg-brand-coastal hover:text-brand-cream active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-coastal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream cursor-pointer"
           >
-            <span>See full menu & reserve</span>
+            <span>See full menu</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </ScrollReveal>
