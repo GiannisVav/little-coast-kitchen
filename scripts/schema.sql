@@ -27,10 +27,23 @@ CREATE TABLE IF NOT EXISTS dishes (
 ALTER TABLE dishes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Allow public read access to dishes" ON dishes;
 CREATE POLICY "Allow public read access to dishes" ON dishes FOR SELECT USING (true);
+DROP POLICY IF EXISTS "Allow public read access to categories" ON categories;
 CREATE POLICY "Allow public read access to categories" ON categories FOR SELECT USING (true);
 
--- 4. Seed initial dishes
+-- 4. Seed initial categories
+INSERT INTO categories (name, sort_order)
+VALUES
+  ('Mezedes & Starters', 1),
+  ('From the Hearth', 2),
+  ('Aegean Seafood', 3),
+  ('Salads & Sides', 4),
+  ('Desserts', 5),
+  ('Cocktails & Wines', 6)
+ON CONFLICT (name) DO NOTHING;
+
+-- 5. Seed initial dishes
 INSERT INTO dishes (id, name, category, price, description, image, tags, is_signature)
 VALUES
   -- Mezedes & Starters
