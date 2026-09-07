@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { smoothScrollTo } from "@/lib/scrollTo";
+import { useMenuModal } from "@/context/MenuModalContext";
 import ScrollReveal from "./ScrollReveal";
 
 interface Dish {
@@ -60,6 +60,8 @@ const dishes: Dish[] = [
 ];
 
 export default function FeaturedDishes() {
+  const { openMenuModal } = useMenuModal();
+
   return (
     <section
       id="menu"
@@ -127,11 +129,11 @@ export default function FeaturedDishes() {
           ))}
         </div>
 
-        {/* Centered Button: "See full menu" with Smooth Scroll */}
+        {/* Centered Button: "See full menu" triggering the Full-Screen Menu Modal */}
         <ScrollReveal variant="fade-up" delay={200} className="mt-14 sm:mt-16 flex justify-center">
           <button
             type="button"
-            onClick={() => smoothScrollTo("#reservations")}
+            onClick={openMenuModal}
             className="group inline-flex items-center justify-center rounded-full border border-brand-coastal/35 bg-transparent px-8 py-3.5 text-xs sm:text-sm font-medium tracking-widest uppercase text-brand-coastal transition-all duration-300 ease-out hover:border-brand-coastal hover:bg-brand-coastal hover:text-brand-cream active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-coastal focus-visible:ring-offset-2 focus-visible:ring-offset-brand-cream cursor-pointer"
           >
             <span>See full menu</span>

@@ -5,40 +5,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu as MenuIcon, X } from "lucide-react";
 import { smoothScrollTo } from "@/lib/scrollTo";
+import { useMenuModal } from "@/context/MenuModalContext";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openMenuModal } = useMenuModal();
 
-  const navLinks = [
-    { name: "Menu", href: "#menu" },
-    { name: "Our Story", href: "#story" },
-    { name: "Visit", href: "#visit" },
-    { name: "Reservations", href: "#reservations" },
-  ];
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleMenuModalClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    openMenuModal();
+  };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      setMobileMenuOpen(false);
-      smoothScrollTo(href);
-    }
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    smoothScrollTo(href);
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-brand-aegean/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <header className="sticky top-0 z-40 w-full bg-brand-aegean/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
       <nav
         aria-label="Main Navigation"
         className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5 sm:px-8 sm:py-4 lg:px-12"
       >
-        {/* Brand Logo on the Left - image only */}
+        {/* Brand Logo on the Left */}
         <Link
           href="/"
-          onClick={(e) => {
-            if (window.location.pathname === "/") {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }}
+          onClick={handleHomeClick}
           className="group flex items-center gap-3 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand focus-visible:ring-offset-2 focus-visible:ring-offset-brand-aegean"
           aria-label="Little Coast Mediterranean Kitchen - Return to homepage"
         >
@@ -56,19 +56,63 @@ export default function Navigation() {
         {/* Desktop Navigation Links and CTA on the Right */}
         <div className="hidden items-center gap-8 lg:flex">
           <ul className="flex items-center gap-7">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+            {/* 1. HOME */}
+            <li>
+              <a
+                href="#top"
+                onClick={handleHomeClick}
+                className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+              >
+                Home
+              </a>
+            </li>
+
+            {/* 2. FEATURED DISHES */}
+            <li>
+              <a
+                href="#menu"
+                onClick={(e) => handleNavClick(e, "#menu")}
+                className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+              >
+                Featured Dishes
+              </a>
+            </li>
+
+            {/* 3. MENU (Opens Full-Screen Menu Modal) */}
+            <li>
+              <button
+                type="button"
+                onClick={handleMenuModalClick}
+                className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+              >
+                Menu
+              </button>
+            </li>
+
+            {/* 4. OUR STORY */}
+            <li>
+              <a
+                href="#story"
+                onClick={(e) => handleNavClick(e, "#story")}
+                className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+              >
+                Our Story
+              </a>
+            </li>
+
+            {/* 5. VISIT */}
+            <li>
+              <a
+                href="#visit"
+                onClick={(e) => handleNavClick(e, "#visit")}
+                className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+              >
+                Visit
+              </a>
+            </li>
           </ul>
 
+          {/* CTA button */}
           <a
             href="#reservations"
             onClick={(e) => handleNavClick(e, "#reservations")}
@@ -104,16 +148,45 @@ export default function Navigation() {
           className="lg:hidden border-b border-brand-sand/20 bg-brand-aegean/98 px-6 pt-4 pb-8 backdrop-blur-xl shadow-2xl transition-all duration-200 animate-fade-in-down"
         >
           <div className="flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
-              >
-                {link.name}
-              </a>
-            ))}
+            <a
+              href="#top"
+              onClick={handleHomeClick}
+              className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
+            >
+              Home
+            </a>
+
+            <a
+              href="#menu"
+              onClick={(e) => handleNavClick(e, "#menu")}
+              className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
+            >
+              Featured Dishes
+            </a>
+
+            <button
+              type="button"
+              onClick={handleMenuModalClick}
+              className="text-left w-full block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
+            >
+              Menu
+            </button>
+
+            <a
+              href="#story"
+              onClick={(e) => handleNavClick(e, "#story")}
+              className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
+            >
+              Our Story
+            </a>
+
+            <a
+              href="#visit"
+              onClick={(e) => handleNavClick(e, "#visit")}
+              className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
+            >
+              Visit
+            </a>
 
             <div className="pt-3">
               <a

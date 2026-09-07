@@ -4,8 +4,11 @@ import React from "react";
 import Image from "next/image";
 import { MapPin, Clock } from "lucide-react";
 import { smoothScrollTo } from "@/lib/scrollTo";
+import { useMenuModal } from "@/context/MenuModalContext";
 
 export default function HeroSection() {
+  const { openMenuModal } = useMenuModal();
+
   return (
     <section className="relative min-h-[calc(100svh-4.5rem)] w-full flex flex-col justify-between overflow-hidden bg-brand-aegean">
       {/* 1. Full-Bleed Background Image with Soft Dark Overlay */}
@@ -60,7 +63,7 @@ export default function HeroSection() {
 
               <button
                 type="button"
-                onClick={() => smoothScrollTo("#menu")}
+                onClick={openMenuModal}
                 className="btn-secondary w-full min-w-[170px] uppercase text-xs font-semibold tracking-[0.16em] sm:w-auto cursor-pointer"
               >
                 View menu

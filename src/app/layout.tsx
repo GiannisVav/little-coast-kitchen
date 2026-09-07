@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
+import { MenuModalProvider } from "@/context/MenuModalContext";
+import MenuModal from "@/components/MenuModal";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -19,7 +21,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Little Coast — Mediterranean Kitchen",
-  description: "An intimate candlelit dining room and wood-fired hearth nestled along the harbor in Portsmouth. Celebrating authentic Mediterranean coastal cooking.",
+  description: "A relaxed Mediterranean restaurant serving grilled meats, seafood, fresh salads, and classic Greek dishes near the harbor.",
   icons: {
     icon: "/assets/logos/logo-light.png",
   },
@@ -33,7 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body className="font-sans bg-brand-aegean text-brand-ivory min-h-screen selection:bg-brand-terracotta selection:text-brand-cream">
-        {children}
+        <MenuModalProvider>
+          {children}
+          <MenuModal />
+        </MenuModalProvider>
       </body>
     </html>
   );
