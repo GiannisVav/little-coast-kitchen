@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="reservations" className="relative overflow-hidden bg-brand-aegean px-6 pt-20 pb-12 text-brand-ivory sm:px-8 sm:pt-28 lg:px-12 scroll-mt-20">
+    <footer className="relative overflow-hidden bg-brand-aegean border-t border-brand-sand/15 px-6 pt-16 pb-12 text-brand-ivory sm:px-8 sm:pt-20 lg:px-12">
       {/* Ambient background glow */}
       <div
         aria-hidden="true"
@@ -22,13 +22,6 @@ export default function Footer() {
       />
 
       <div className="relative mx-auto max-w-7xl">
-        {/* Top Note Box */}
-        <div className="mb-16 rounded-2xl border border-brand-sand/20 bg-brand-coastal/40 p-6 text-center backdrop-blur-sm sm:p-8">
-          <p className="text-sm text-brand-sand/90 font-light">
-            Note: Reservations and full menu features will be added in later chapters.
-          </p>
-        </div>
-
         {/* 3-Column Footer Grid */}
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12 lg:gap-16">
           {/* Brand Info (5 Cols) */}
@@ -103,6 +96,15 @@ export default function Footer() {
                   className="transition-colors hover:text-brand-cream cursor-pointer"
                 >
                   Visit & Location
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#reservations"
+                  onClick={(e) => handleNavClick(e, "#reservations")}
+                  className="transition-colors hover:text-brand-cream cursor-pointer"
+                >
+                  Reservations
                 </a>
               </li>
               <li>

@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import FeaturedDishes from "@/components/FeaturedDishes";
 import OurStory from "@/components/OurStory";
 import VisitUs from "@/components/VisitUs";
+import ReservationSection from "@/components/ReservationSection";
 import Footer from "@/components/Footer";
 import {
   HeroToDishesDivider,
@@ -37,7 +38,10 @@ export default function Home() {
       {/* Coastal Wave Transition: Soft Cream/Ivory -> Aegean Navy */}
       <AboutToReservationsDivider />
 
-      {/* 6. Footer Section */}
+      {/* 6. Reservation Section */}
+      <ReservationSection />
+
+      {/* 7. Footer Section */}
       <Footer />
     </div>
   );

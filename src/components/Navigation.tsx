@@ -110,6 +110,17 @@ export default function Navigation() {
                 Visit
               </a>
             </li>
+
+            {/* 6. RESERVATIONS */}
+            <li>
+              <a
+                href="#reservations"
+                onClick={(e) => handleNavClick(e, "#reservations")}
+                className="nav-link text-[13px] uppercase tracking-[0.18em] font-medium text-brand-ivory/90 hover:text-brand-cream cursor-pointer"
+              >
+                Reservations
+              </a>
+            </li>
           </ul>
 
           {/* CTA button */}
@@ -186,6 +197,14 @@ export default function Navigation() {
               className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
             >
               Visit
+            </a>
+
+            <a
+              href="#reservations"
+              onClick={(e) => handleNavClick(e, "#reservations")}
+              className="block py-2.5 text-base font-medium tracking-widest text-brand-ivory/90 transition-colors hover:text-brand-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-sand rounded px-2 cursor-pointer"
+            >
+              Reservations
             </a>
 
             <div className="pt-3">
